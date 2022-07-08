@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import Controller from './Controller';
 import User from '../schemas/user';
-import ValidationService from './services/ValidationService';
+import ValidationService from '../services/ValidationService';
 import ServerErrorException from '../errors/ServerErrorException';
 import NoContentException from '../errors/NoContentException';
 import responseCreate from '../responses/ResponseCreate';
