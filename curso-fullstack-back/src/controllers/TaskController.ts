@@ -15,22 +15,10 @@ class TaskController extends Controller {
   }
 
   protected initRoutes(): void {
-    this.router.get(`${this.path}/:filter/:_id`, this.list);
     this.router.get(`${this.path}/:id`, this.findById);
     this.router.post(this.path, this.create);
     this.router.put(`${this.path}/:id`, this.edit);
     this.router.delete(`${this.path}/:id`, this.delete);
-  }
-
-  private async list(req: Request, res: Response, next: NextFunction) {
-    try {
-      const tasks = await Task.find(TaskService.getParamsList(req)).populate('responsible');
-
-      if (tasks.length) return responseOk(res, tasks);
-      next(new NoContentException());
-    } catch (error) {
-      next(new ServerErrorException(error));
-    }
   }
 
   private async findById(req: Request, res: Response, next: NextFunction) {
@@ -48,7 +36,7 @@ class TaskController extends Controller {
 
   private async create(req: Request, res: Response, next: NextFunction) {
     try {
-      let task: TaskInterface = req.body;
+      let task = req.body;
 
       TaskService.checkStatusFinished(task);
       task = await Task.create(task);
@@ -65,7 +53,7 @@ class TaskController extends Controller {
       const { id } = req.params;
       if (ValidationService.validateId(id, next)) return;
 
-      let task: TaskInterface = req.body;
+      let task = req.body;
       TaskService.checkStatusFinished(task);
 
       task = await Task.findByIdAndUpdate(id, task, () => {});
