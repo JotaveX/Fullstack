@@ -1,12 +1,12 @@
 import App from './app';
 import DashController from './controllers/DashController';
-import TaskController from './controllers/TaskController';
 import UserController from './controllers/UserController';
+import VacaController from './controllers/VacaController';
 
 const app = new App([
   new UserController(),
-  new TaskController(),
   new DashController(),
+  new VacaController(),
 ]);
 
 app.listen(3333);

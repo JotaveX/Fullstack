@@ -2,35 +2,35 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { idUserLogged } from 'app/app.component';
 import { ResponseApp } from 'app/models/response';
-import { Task, TaskFilterEnum } from 'app/models/task';
+import { Event } from 'app/models/event';
 import { Observable } from 'rxjs';
 import { DefaultService } from './default.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TaskService extends DefaultService {
+export class EventService extends DefaultService {
   constructor(private http: HttpClient) {
-    super('task');
+    super('event');
   }
 
-  list(taskFilterEnum: TaskFilterEnum): Observable<ResponseApp<Task[]>> {
-    return this.http.get<ResponseApp<Task[]>>(`${this.url}/${taskFilterEnum}/${idUserLogged}`);
+  list(event: Event): Observable<ResponseApp<Event[]>> {
+    return this.http.get<ResponseApp<Event[]>>(`${this.url}/${event}/${idUserLogged}`);
   }
 
-  findById(id: string): Observable<ResponseApp<Task>> {
-    return this.http.get<ResponseApp<Task>>(`${this.url}/${id}`);
+  findById(id: string): Observable<ResponseApp<Event>> {
+    return this.http.get<ResponseApp<Event>>(`${this.url}/${id}`);
   }
 
-  create(task: Task): Observable<ResponseApp<Task>> {
-    return this.http.post<ResponseApp<Task>>(this.url, task);
+  create(event: Event): Observable<ResponseApp<Event>> {
+    return this.http.post<ResponseApp<Event>>(this.url, event);
   }
 
-  edit(task: Task): Observable<ResponseApp<Task>> {
-    return this.http.put<ResponseApp<Task>>(`${this.url}/${task._id}`, task);
+  edit(event: Event): Observable<ResponseApp<Event>> {
+    return this.http.put<ResponseApp<Event>>(`${this.url}/${event.id}`, event);
   }
 
-  delete(id: String): Observable<ResponseApp<Task>> {
-    return this.http.delete<ResponseApp<Task>>(`${this.url}/${id}`);
+  delete(id: String): Observable<ResponseApp<Event>> {
+    return this.http.delete<ResponseApp<Event>>(`${this.url}/${id}`);
   }
 }

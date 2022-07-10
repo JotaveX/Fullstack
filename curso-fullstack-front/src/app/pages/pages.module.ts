@@ -6,8 +6,8 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 
 import { UserModule } from './user/user.module';
-import { TaskModule } from './task/task.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { VacaModule } from './vaca/vaca.module';
 
 @NgModule({
   imports: [
@@ -16,8 +16,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     NbMenuModule,
     DashboardModule,
     UserModule,
-    TaskModule,
-
+    VacaModule,
   ],
   declarations: [
     PagesComponent,

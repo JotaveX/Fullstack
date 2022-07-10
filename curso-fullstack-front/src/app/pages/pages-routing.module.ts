@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 
 import { UserComponent } from './user/user.component';
-import { TaskComponent } from './task/task.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { VacaComponent } from './vaca/vaca.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,12 +20,8 @@ const routes: Routes = [{
       component: DashboardComponent,
     },
     {
-      path: 'user',
+      path: 'vaca',
       component: UserComponent,
-    },
-    {
-      path: 'task',
-      component: TaskComponent,
     },
   ],
 }];

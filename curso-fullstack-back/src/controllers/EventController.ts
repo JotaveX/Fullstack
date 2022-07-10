@@ -6,12 +6,11 @@ import ServerErrorException from '../errors/ServerErrorException';
 import NoContentException from '../errors/NoContentException';
 import responseCreate from '../responses/ResponseCreate';
 import responseOk from '../responses/ResponseOk';
-import Task, { TaskInterface } from '../schemas/task';
-import TaskService from '../services/TaskService';
+import Event, { EventInterface } from '../schemas/event';
 
-class TaskController extends Controller {
+class EventController extends Controller {
   constructor() {
-    super('/task');
+    super('/event');
   }
 
   protected initRoutes(): void {
@@ -26,8 +25,8 @@ class TaskController extends Controller {
       const { id } = req.params;
       if (ValidationService.validateId(id, next)) return;
 
-      const task = await Task.findById(id);
-      if (task) return responseOk(res, task);
+      const event = await Event.findById(id);
+      if (event) return responseOk(res, event);
       next(new NoContentException());
     } catch (error) {
       next(new ServerErrorException(error));
@@ -36,13 +35,12 @@ class TaskController extends Controller {
 
   private async create(req: Request, res: Response, next: NextFunction) {
     try {
-      let task = req.body;
+      let event = req.body;
 
-      TaskService.checkStatusFinished(task);
-      task = await Task.create(task);
-      task = await Task.findById(task.id).populate('responsible');
+      event = await Event.create(event);
+      event = await Event.findById(event.id).populate('responsible');
 
-      return responseCreate(res, task);
+      return responseCreate(res, event);
     } catch (error) {
       next(new ServerErrorException(error));
     }
@@ -53,13 +51,12 @@ class TaskController extends Controller {
       const { id } = req.params;
       if (ValidationService.validateId(id, next)) return;
 
-      let task = req.body;
-      TaskService.checkStatusFinished(task);
+      let event = req.body;
 
-      task = await Task.findByIdAndUpdate(id, task, () => {});
-      if (task) {
-        task = await Task.findById(task.id).populate('responsible');
-        return responseOk(res, task);
+      event = await Event.findByIdAndUpdate(id, event, () => {});
+      if (event) {
+        event = await Event.findById(event.id).populate('responsible');
+        return responseOk(res, event);
       }
 
       next(new NoContentException());
@@ -73,10 +70,10 @@ class TaskController extends Controller {
       const { id } = req.params;
       if (ValidationService.validateId(id, next)) return;
 
-      const task = await Task.findById(id);
-      if (task) {
-        task.deleteOne();
-        return responseOk(res, task);
+      const event = await Event.findById(id);
+      if (event) {
+        event.deleteOne();
+        return responseOk(res, event);
       }
 
       next(new NoContentException());
@@ -86,4 +83,4 @@ class TaskController extends Controller {
   }
 }
 
-export default TaskController;
+export default EventController;

@@ -13,19 +13,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
-    title: 'Usuários',
-    icon: 'person-outline',
-    link: '/pages/user',
-  },
-  {
-    title: 'Tarefas',
-    icon: 'checkmark-square-outline',
-    children: [
-      new TaskFilter('Minhas', TaskFilterEnum.MY),
-      new TaskFilter('Em aberto', TaskFilterEnum.OPENED),
-      new TaskFilter('Finalizadas', TaskFilterEnum.FINISHED),
-      new TaskFilter('Todas', TaskFilterEnum.ALL),
-    ],
+    title: 'Vaca',
+    icon: 'heart',
+    link: '/pages/vaca',
   },
 
 ];

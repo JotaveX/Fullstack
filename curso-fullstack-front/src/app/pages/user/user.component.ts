@@ -27,7 +27,8 @@ export class UserComponent implements OnInit {
   formUser = this.formBuilder.group({
     _id: [null],
     name: [null, Validators.required],
-    email: [null, [Validators.required, Validators.email]],
+    born: [null],
+    email: [null, [Validators.required]],
     password: [null, Validators.required],
     creation: { value: null, disabled: true },
   });
@@ -52,13 +53,13 @@ export class UserComponent implements OnInit {
       delete: {
         deleteButtonContent: '<span class="nb-trash"  title="Excluir"></span>',
       },
-      noDataMessage: 'Nenhum usuário cadastrado.',
+      noDataMessage: 'Nenhuma vaca cadastrada.',
       columns: {
         name: {
           title: 'Nome',
         },
         email: {
-          title: 'E-mail',
+          title: 'Brinco',
         },
       },
     };

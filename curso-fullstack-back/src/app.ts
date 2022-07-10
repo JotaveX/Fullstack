@@ -27,7 +27,7 @@ private initMongoose(): void {
 }
 
 private connectDatabase(): void {
-  mongoose.connect('mongodb+srv://jotave:jkQtabeQAgAqB4Yr@cluster0.dsepe.mongodb.net/?retryWrites=true&w=majority', {
+  mongoose.connect('mongodb+srv://jotave:nUiXO6YS1AEMm3t7@cluster0.dsepe.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

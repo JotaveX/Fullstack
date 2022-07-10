@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { NbCardModule } from '@nebular/theme';
 
-import { UserService } from 'app/services/user.service';
+import { VacaService } from 'app/services/vaca.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { TaskService } from 'app/services/task.service';
 import { ThemeModule } from '../../@theme/theme.module';
-import { TaskComponent } from './task.component';
+import { VacaComponent } from './vaca.component';
 
 @NgModule({
   imports: [
@@ -18,9 +17,9 @@ import { TaskComponent } from './task.component';
 
   ],
   declarations: [
-    TaskComponent,
+    VacaComponent,
   ],
-  providers: [UserService, TaskService],
+  providers: [VacaService],
 
 })
-export class TaskModule { }
+export class VacaModule { }
